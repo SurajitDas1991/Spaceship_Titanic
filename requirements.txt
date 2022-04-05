@@ -1,0 +1,16 @@
+### dependency
+tqdm
+mlflow
+pandas
+numpy
+seaborn
+PyYAML
+streamlit
+ipykernel
+scikit-learn
+xgboost
+lightgbm
+
+
+### local packages -
+# -e . # << uncomment this to install from setup.py
