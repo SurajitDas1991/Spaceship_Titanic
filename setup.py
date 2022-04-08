@@ -7,7 +7,7 @@ with open('requirements.txt') as f:
     required = f.read().splitlines()
 
 ## edit below variables as per your requirements -
-REPO_NAME = "mlflow-project-template"
+REPO_NAME = "Spaceship Titanic"
 AUTHOR_USER_NAME = "SurajitDas1991"
 SRC_REPO = "src"
 LIST_OF_REQUIREMENTS = required
@@ -17,7 +17,7 @@ setup(
     name=SRC_REPO,
     version="0.0.1",
     author=AUTHOR_USER_NAME,
-    description="A small package for MLFlow",
+    description="Predict which passengers are transported to an alternate dimension",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
