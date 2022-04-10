@@ -5,6 +5,7 @@ import logging
 import time
 import pandas as pd
 import json
+import textwrap
 from zipfile import ZipFile
 from pathlib import Path
 import pathlib
@@ -17,6 +18,23 @@ def get_appended_path(path_to_append):
         create_directories([appended_path])
     return appended_path
 
+def wrap_labels(ax, width, break_long_words=False):
+    labels = []
+    for label in ax.get_xticklabels():
+        text = label.get_text()
+        labels.append(
+            textwrap.fill(text, width=width, break_long_words=break_long_words)
+        )
+    ax.set_xticklabels(labels, rotation=0)
+
+def read_dataframe(config)->pd.DataFrame:
+    '''
+    Read the csv file and return the dataframe
+    config : configuration file for the project.
+    '''
+    csv_path=os.path.join(get_appended_path(config["data"]["RAW_DIR"]),config["data"]["TRAIN_FILE"])
+    train_df=pd.read_csv(csv_path)
+    return train_df
 
 def read_yaml(path_to_yaml: str) -> dict:
     with open(path_to_yaml) as yaml_file:

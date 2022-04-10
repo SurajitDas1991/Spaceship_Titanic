@@ -3,6 +3,7 @@ import shutil
 import logging
 from src.utils.common import read_yaml, create_directories
 import mlflow
+import xgboost
 
 STAGE = "MAIN FILE" ## <<< change stage name
 
