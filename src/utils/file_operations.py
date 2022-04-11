@@ -24,10 +24,30 @@ class FileOperations:
                 os.makedirs(path)
             else:
                 os.makedirs(path)  #
-            with open(path + "/" + filename + ".sav", "wb") as f:
+            with open(path + "/" + filename + ".pkl", "wb") as f:
                 pickle.dump(model, f)  # save the model to file
             #self.logger.info("Model File " + filename + " saved.")
             return "success"
         except Exception as e:
             #self.logger.error("Exception while saving the model" + str(e))
+            raise Exception()
+
+    def load_model(self, filename):
+        """
+        Loads the model file in directory
+        """
+        print(os.path.join(self.model_directory, filename, filename + "." + "pkl"))
+        #self.logger.info("Loading model from the directory")
+        try:
+            with open(
+                os.path.join(self.model_directory, filename, filename + "." + "sav"),
+                "rb",
+            ) as f:
+                #self.logger.info("Model File " + filename + " loaded.")
+                return pickle.load(f)
+        except Exception as e:
+            # self.logger.error(
+            #     "Exception occured in load_model method of the Model_Finder class. Exception message:  "
+            #     + str(e)
+            #)
             raise Exception()

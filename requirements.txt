@@ -11,6 +11,9 @@ scikit-learn
 xgboost
 lightgbm
 entrypoints
-
+catboost
+feature-engine
+missingno
+textwrap3
 ### local packages -
 -e . # << uncomment this to install from setup.py

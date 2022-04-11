@@ -36,6 +36,15 @@ def read_dataframe(config)->pd.DataFrame:
     train_df=pd.read_csv(csv_path)
     return train_df
 
+def read_test_dataframe(config)->pd.DataFrame:
+    '''
+    Read the csv file and return the dataframe
+    config : configuration file for the project.
+    '''
+    csv_path=os.path.join(get_appended_path(config["data"]["RAW_DIR"]),config["data"]["TEST_FILE"])
+    test_df=pd.read_csv(csv_path)
+    return test_df
+
 def read_yaml(path_to_yaml: str) -> dict:
     with open(path_to_yaml) as yaml_file:
         content = yaml.safe_load(yaml_file)
