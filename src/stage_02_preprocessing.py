@@ -28,18 +28,17 @@ logging.basicConfig(
 def main(config_path, params_path):
     ## read config files
     config = read_yaml(config_path)
-    params = read_yaml(params_path)
     train_df=read_dataframe(config)
     train_df=create_age_group_features(train_df)
     train_df=extract_cabin_info(train_df)
     numeric_data,categorical_data=split_to_numeric_cat_data(train_df)
-    print(numeric_data.columns)
+    #print(numeric_data.columns)
     train_df=create_expenditure_feature(train_df,numeric_data)
     cols_to_drop=['PassengerId','Age_group', 'Cabin_number','Expenditure','Name']
     train_df=features_to_be_dropped(train_df,cols_to_drop)
 
-    #print(train_df.columns)
-    y=train_df['Transported'].copy().astype(int)
+    #print(train_df['Transported'])
+    y=train_df['Transported'].copy().replace({True: 1, False: 0})
     X=train_df.drop('Transported',axis=1).copy()
     numeric_data,categorical_data=split_to_numeric_cat_data(X)
     columns_for_transformation=[numeric_data.columns[1:]]
@@ -57,7 +56,9 @@ def main(config_path, params_path):
     #print(final_df)
     final_df.to_pickle("./final_df.pkl")
     y.to_pickle("./target.pkl")
-    print(final_df.columns)
+    # for i in final_df.columns:
+    #     print(f"{i} - {type(i)}")
+    #print(final_df.columns)
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()

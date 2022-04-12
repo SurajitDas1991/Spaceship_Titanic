@@ -3,21 +3,14 @@ import os
 import shutil
 from tqdm import tqdm
 import logging
-from src.utils.common import read_test_dataframe, read_yaml, create_directories
-import random
+from src.utils.common import read_test_dataframe, read_yaml
 import pandas as pd
 from src.utils import file_operations
 from src.utils.preprocessing import *
 
 STAGE = "Prediction" ## <<< change stage name
 
-'''
-Final dataframe needs to be in this format
 
-'Age', 'RoomService', 'FoodCourt', 'ShoppingMall', 'Spa', 'VRDeck',
-'No_spending', 'HomePlanet', 'CryoSleep', 'Destination', 'VIP','Cabin_deck', 'Cabin_side'
-
-'''
 
 logging.basicConfig(
     filename=os.path.join("logs", 'running_logs.log'),
@@ -26,24 +19,7 @@ logging.basicConfig(
     filemode="a"
     )
 
-def create_dataframe(age,room_service,food_court,shopping_mall,spa,vrdeck,no_spending,home_planet,cryosleep,destination,vip,cabin_deck,cabin_side):
-    details = {
-    'Age' : [age],
-    'RoomService' : [room_service],
-    'FoodCourt' : [food_court],
-    'ShoppingMall' : [shopping_mall],
-    'Spa' : [spa],
-    'VRDeck' : [vrdeck],
-    'No_spending' : [no_spending],
-    'HomePlanet' : [home_planet],
-    'CryoSleep':[cryosleep],
-    'Destination':[destination],
-    'VIP':[vip],
-    'Cabin_deck':[cabin_deck],
-    'Cabin_side':[cabin_side]
-    }
-    features=['Age', 'RoomService', 'FoodCourt', 'ShoppingMall', 'Spa', 'VRDeck','No_spending', 'HomePlanet', 'CryoSleep', 'Destination', 'VIP','Cabin_deck', 'Cabin_side']
-    df=pd.DataFrame(details,columns= features)
+
 
 
 def preprocess_data(config):
@@ -51,7 +27,7 @@ def preprocess_data(config):
     test_df=create_age_group_features(test_df)
     test_df=extract_cabin_info(test_df)
     numeric_data,categorical_data=split_to_numeric_cat_data(test_df)
-    print(numeric_data.columns)
+
     test_df=create_expenditure_feature(test_df,numeric_data)
     cols_to_drop=['PassengerId','Age_group', 'Cabin_number','Expenditure','Name']
     test_df=features_to_be_dropped(test_df,cols_to_drop)
@@ -80,9 +56,8 @@ def predict(df,loaded_model):
 def main(config_path, params_path):
     ## read config files
     config = read_yaml(config_path)
-    params = read_yaml(params_path)
-    file_op=file_operations.FileOperations(config['artifacts'])
-    loaded_model=file_op.load_model('LightGBM')
+    file_op=file_operations.FileOperations(config['artifacts']['TRAINED_MODEL_DIR'])
+    loaded_model=file_op.load_model('StackingClassifier')
     df=preprocess_data(config)
     if loaded_model is not None:
         predict(df,loaded_model)

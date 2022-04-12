@@ -5,6 +5,8 @@ from datetime import datetime
 from src import utils
 import pandas as pd
 
+from src.utils.common import get_appended_path
+
 class FileOperations:
     def __init__(self,model_path) -> None:
         self.model_directory=model_path
@@ -36,11 +38,12 @@ class FileOperations:
         """
         Loads the model file in directory
         """
-        print(os.path.join(self.model_directory, filename, filename + "." + "pkl"))
+        #print(self.model_directory)
+        print(os.path.join(get_appended_path(self.model_directory), filename, filename + "." + "pkl"))
         #self.logger.info("Loading model from the directory")
         try:
             with open(
-                os.path.join(self.model_directory, filename, filename + "." + "sav"),
+                os.path.join(get_appended_path(self.model_directory), filename, filename + "." + "pkl"),
                 "rb",
             ) as f:
                 #self.logger.info("Model File " + filename + " loaded.")

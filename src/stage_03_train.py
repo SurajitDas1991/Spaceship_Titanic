@@ -30,7 +30,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import cross_validate
 from sklearn.model_selection import train_test_split, cross_val_score, RandomizedSearchCV
 
-STAGE = "Training phase" ## <<< change stage name
+STAGE = "Training phase"
 
 logging.basicConfig(
     filename=os.path.join("logs", 'running_logs.log'),
@@ -158,7 +158,7 @@ class Model_Finder:
             "XGBoost": {"model": xgb.XGBClassifier(**self.hyperparametertuning.hyperparams_xgboost(train_x,train_y)).fit(train_x, train_y)},
             "LightGBM": {"model": lgb.LGBMClassifier(**self.hyperparametertuning.hyperparams_lightgbm(train_x,train_y)).fit(train_x, train_y)},
             "AdaBoost": {"model": AdaBoostClassifier(**self.hyperparametertuning.hyperparams_adaboost(train_x,train_y)).fit(train_x, train_y)},
-             "ExtraTrees": {"model": ExtraTreesClassifier(**self.hyperparametertuning.hyperparams_extratrees(train_x,train_y)).fit(train_x, train_y)},
+             "ExtraTrees": {"model": ExtraTreesClassifier(**self.hyperparametertuning.hyperparams_extratrees(train_x,train_y)).fit(train_x, train_y)}
         }
 
         # Use the 10-fold cross validation for each model
@@ -166,7 +166,7 @@ class Model_Finder:
         for name, m in models.items():
             # Cross validation of the model
             model = m["model"]
-            result = cross_validate(model, train_x, train_y, cv=1)
+            result = cross_validate(model, train_x, train_y, cv=2)
 
             # Mean accuracy and mean training time
             mean_val_accuracy = round(
@@ -298,7 +298,6 @@ class Model_Finder:
 def main(config_path, params_path):
     ## read config files
     config = read_yaml(config_path)
-    params = read_yaml(params_path)
     model_finder=Model_Finder(config)
     final_df = pd.read_pickle("./final_df.pkl")
     y=pd.read_pickle("./target.pkl")
