@@ -1,5 +1,5 @@
 ### dependency
-src
+
 tqdm
 mlflow
 pandas
@@ -19,3 +19,4 @@ textwrap3
 
 ### local packages -
 #-e . # << uncomment this to install from setup.py
+--install-option="--config=configs/config.yaml --params=params.yaml" .
