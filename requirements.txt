@@ -1,5 +1,5 @@
 ### dependency
-
+pipenv
 tqdm
 mlflow
 pandas
@@ -16,7 +16,7 @@ catboost
 feature-engine
 missingno
 textwrap3
-pipenv
+
 
 ### local packages -
 #-e . # << uncomment this to install from setup.py
