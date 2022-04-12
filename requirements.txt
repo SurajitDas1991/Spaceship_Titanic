@@ -19,4 +19,4 @@ textwrap3
 
 ### local packages -
 #-e . # << uncomment this to install from setup.py
---install-option="--config=configs/config.yaml --params=params.yaml" .
+src --install-option="--config=configs/config.yaml --params=params.yaml" .
