@@ -1,7 +1,6 @@
 import streamlit as st
 import argparse
 import os
-from src.utils import *
 import pandas as pd
 from src.utils.preprocessing import *
 from src.utils import file_operations
