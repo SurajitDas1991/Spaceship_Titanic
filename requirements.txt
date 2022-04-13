@@ -1,5 +1,7 @@
+### local packages -
+-e . # << uncomment this to install from setup.py
+
 ### dependency
-pipenv
 tqdm
 mlflow
 pandas
@@ -16,9 +18,3 @@ catboost
 feature-engine
 missingno
 textwrap3
-
-
-### local packages -
-#-e . # << uncomment this to install from setup.py
-src --install-option='--config=configs/config.yaml' .
-src --install-option='--params=params.yaml' .

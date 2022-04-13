@@ -2,7 +2,8 @@ import streamlit as st
 import argparse
 import os
 import pandas as pd
-from src.utils.preprocessing import *
+from src.utils import *
+from src.utils.preprocessing import (create_expenditure_feature,create_age_group_features,extract_cabin_info,split_to_numeric_cat_data,impute_continous_features,impute_categorical_data,encode_categorical_data,read_yaml,features_to_be_dropped,scale_test_numeric_features,log_transform)
 from src.utils import file_operations
 
 original_df=pd.DataFrame()

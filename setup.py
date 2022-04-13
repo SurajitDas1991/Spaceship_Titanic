@@ -10,7 +10,8 @@ with open('requirements.txt') as f:
 REPO_NAME = "Spaceship Titanic"
 AUTHOR_USER_NAME = "SurajitDas1991"
 SRC_REPO = "src"
-LIST_OF_REQUIREMENTS = required
+UTILS_REPO='src/utils'
+LIST_OF_REQUIREMENTS = list(required)
 
 
 setup(
@@ -22,8 +23,8 @@ setup(
     long_description_content_type="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
     author_email="dsurajitd@gmail.com",
-    packages=[SRC_REPO],
+    packages=[SRC_REPO,UTILS_REPO],
     license="MIT",
     python_requires=">=3.8",
-    install_requires=LIST_OF_REQUIREMENTS
+    # install_requires=LIST_OF_REQUIREMENTS
 )
