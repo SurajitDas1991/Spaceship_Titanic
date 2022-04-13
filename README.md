@@ -8,9 +8,9 @@ This is an app to predict if passengers have been transported based on the avail
 
 The entire code is developed in modular fashion. Idea has been to focus on more on trying out feature engineering and utilizing different machine learning algorithms.
 
-![alt text](https://github.com/SurajitDas1991/Spaceship_Titanic/blob/main/assets/01.jpg?raw=true)
-![alt text](https://github.com/SurajitDas1991/Spaceship_Titanic/blob/main/assets/02.jpg?raw=true)
-![alt text](https://github.com/SurajitDas1991/Spaceship_Titanic/blob/main/assets/03.jpg?raw=true)
+![alt text](https://github.com/SurajitDas1991/Spaceship_Titanic/blob/main/assets/1.jpg?raw=true)
+![alt text](https://github.com/SurajitDas1991/Spaceship_Titanic/blob/main/assets/2.jpg?raw=true)
+![alt text](https://github.com/SurajitDas1991/Spaceship_Titanic/blob/main/assets/3.jpg?raw=true)
 
 
 ## STEPS -
