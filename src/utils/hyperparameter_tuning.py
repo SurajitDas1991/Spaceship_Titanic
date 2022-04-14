@@ -1,5 +1,5 @@
 from sklearn.impute import KNNImputer
-from sklearn.model_selection import GridSearchCV, RepeatedKFold, RandomizedSearchCV
+from sklearn.model_selection import GridSearchCV, RepeatedKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import AdaBoostClassifier

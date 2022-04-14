@@ -13,5 +13,6 @@ data:
   RAW_DIR: data\raw
   PROCESSED_DIR: data\processed
   TRAIN_FILE: train.csv
+  TEST_FILE: test.csv
 
 params:

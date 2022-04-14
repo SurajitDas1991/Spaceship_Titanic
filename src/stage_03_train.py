@@ -166,7 +166,7 @@ class Model_Finder:
         for name, m in models.items():
             # Cross validation of the model
             model = m["model"]
-            result = cross_validate(model, train_x, train_y, cv=2)
+            result = cross_validate(model, train_x, train_y, cv=10)
 
             # Mean accuracy and mean training time
             mean_val_accuracy = round(
